@@ -2,6 +2,17 @@
 <component type="desktop">
 	<id>org.gnome.Microstocks.desktop</id>
 	<licence>CC0</licence>
-	<description>
-	</description>
+	<description></description>
+	<name>Microstocks</name>
+	<summary>An microstocks photography for GNOME</summary>
+	<translation type="gettext">microstocks</translation>
+	<url type="homepage">https://bitbucket.org/spiritEcosse/microstocks/overview</url>
+	<url type="bugtracker">https://bitbucket.org/spiritEcosse/microstocks/addon/bitbucket-trello-addon/trello-board</url>
+	<update_contact>shevchenkcoigor@gmail.com</update_contact>
+	<screenshots>
+		<screenshot type="default">
+			<caption>Quickly access your projects</caption>
+			<image width="1600" height="900">https://i.pinimg.com/originals/64/fc/c2/64fcc2387f18caf4416f00687fe168b3.png</image>
+		</screenshot>
+	</screenshots>
 </component>

@@ -1,10 +1,10 @@
 glib_dep = dependency('glib-2.0')
 
-exec = executable('test-application',
-	'test-application.c',
+exec = executable('test-application-exit-success',
+	'test-application-exit-success.c',
 	dependencies: [glib_dep],
 )
-test('test-application', exec)
+test('Application exit success', exec)
 
 # exec = executable('test-settings-window',
 #     'test-settings-window.c',

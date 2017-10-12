@@ -33,7 +33,7 @@ main (int  argc,
 	setlocale (LC_ALL, "");
 
 	g_test_init (&argc, &argv, NULL);
-	g_test_add_func ("/Microstocks/Application/basic", test_app_basic);
+	g_test_add_func ("/Microstocks/ApplicationExitSuccess", test_app_basic);
 
 	return g_test_run ();
 }

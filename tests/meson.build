@@ -1,5 +1,8 @@
+glib_dep = dependency('glib-2.0')
+
 exec = executable('test-application',
-    'test-application.c',
+	'test-application.c',
+	dependencies: [glib_dep],
 )
 test('test-application', exec)
 

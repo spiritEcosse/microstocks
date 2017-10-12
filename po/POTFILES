@@ -1,0 +1,9 @@
+data/org.gnome.Microstocks.desktop.in
+data/org.gnome.Microstocks.appdata.xml.in
+data/org.gnome.Microstocks.gschema.xml
+src/microstocks-window.ui
+src/main.c
+src/microstocks-window.c
+
+
+

@@ -1,8 +1,6 @@
-glib_dep = dependency('glib-2.0')
-
 exec = executable('test-application-exit-success',
 	'test-application-exit-success.c',
-	dependencies: [glib_dep],
+	dependencies: microstocks_deps,
 )
 test('Application exit success', exec)
 

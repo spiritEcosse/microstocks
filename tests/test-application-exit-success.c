@@ -16,11 +16,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 #include <glib.h>
+#include <gtk/gtk.h>
 #include <locale.h>
-#include "microstocks-config.h"
 
+static gint    g_argc;
+static gchar **g_argv;
 
 static void
 test_application_exist_success (void)
@@ -28,8 +29,10 @@ test_application_exist_success (void)
 	g_autoptr(GtkApplication) app = NULL;
 	int ret;
 
-	app = gtk_application_new("org.gnome.Microstocks", G_APPLICATION_FLAGS_NONE);
-	g_signal_connect (app, "activate", G_CALLBACK (on_activate), NULL);
+	app = gtk_application_new("org.gnome.Microstocks",
+				  G_APPLICATION_FLAGS_NONE
+				  );
+	ret = g_application_run(G_APPLICATION(app), g_argc, g_argv);
 }
 
 int
@@ -39,6 +42,10 @@ main (int  argc,
 	setlocale (LC_ALL, "");
 
 	g_test_init (&argc, &argv, NULL);
+
+	g_argc = argc;
+	g_argv = argv;
+
 	g_test_add_func ("/Microstocks/ApplicationExitSuccess",
 			 test_application_exist_success
 	);

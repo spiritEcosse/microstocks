@@ -19,11 +19,17 @@
 
 #include <glib.h>
 #include <locale.h>
+#include "microstocks-config.h"
+
 
 static void
-test_app_basic (void)
+test_application_exist_success (void)
 {
+	g_autoptr(GtkApplication) app = NULL;
+	int ret;
 
+	app = gtk_application_new("org.gnome.Microstocks", G_APPLICATION_FLAGS_NONE);
+	g_signal_connect (app, "activate", G_CALLBACK (on_activate), NULL);
 }
 
 int
@@ -33,7 +39,9 @@ main (int  argc,
 	setlocale (LC_ALL, "");
 
 	g_test_init (&argc, &argv, NULL);
-	g_test_add_func ("/Microstocks/ApplicationExitSuccess", test_app_basic);
+	g_test_add_func ("/Microstocks/ApplicationExitSuccess",
+			 test_application_exist_success
+	);
 
 	return g_test_run ();
 }

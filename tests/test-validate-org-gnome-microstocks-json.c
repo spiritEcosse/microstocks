@@ -30,10 +30,26 @@ main (gint   argc,
 	JsonNode *root;
 	GError *error;
 
-	if (argc < 2)
+	parser = json_parser_new ();
+	error = NULL;
+	json_parser_load_from_file (parser,
+				    "/home/igor/projects/microstocks/org.gnome.Microstocks.json",
+				    &error);
+
+	if (error)
 		{
-			g_print("Usage: test <filename.json\n");
+			g_print ("Unable to parse `%s': %s\n",
+				 "/home/igor/projects/microstocks/org.gnome.Microstocks.json",
+				 error->message);
+			g_error_free (error);
+			g_object_unref (parser);
 			return EXIT_FAILURE;
 		}
-	return 0;
+
+	root = json_parser_get_root (parser);
+
+	/* manipulate the object tree and then exit */
+
+	g_object_unref (parser);
+	return EXIT_SUCCESS;
 }

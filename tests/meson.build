@@ -4,14 +4,10 @@ exec = executable('test-application-exit-success',
 )
 test('Application exit success', exec)
 
-org_gnome_microstocks_json = custom_target("org-gnome-microstocks-json",
-	input='org.gnome.Microstocks.json'
-)
-
 exec = executable('test-validate-org-gnome-microstocks-json',
 	'test-validate-org-gnome-microstocks-json.c',
 	dependencies: microstocks_deps,
-	args: [org_gnome_microstocks_json.full_path()]
+	args: ['org.gnome.Microstocks.json']
 )
 test('Test validate org gnome microstocks json', exec)
 

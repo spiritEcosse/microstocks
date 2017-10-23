@@ -7,7 +7,7 @@ test('Application exit success', exec)
 exec = executable('test-validate-org-gnome-microstocks-json',
 	'test-validate-org-gnome-microstocks-json.c',
 	dependencies: microstocks_deps,
-	args: ['org.gnome.Microstocks.json']
+	link_args: ['org.gnome.Microstocks.json']
 )
 test('Test validate org gnome microstocks json', exec)
 

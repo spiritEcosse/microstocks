@@ -30,8 +30,13 @@ main (gint   argc,
 	JsonNode *root;
 	GError *error;
 
+	  if (argv["json_file"])
+		  {
+			g_print ("Usage: test <filename.json>\n");
+			return EXIT_FAILURE;
+		  }
+
 	g_print("==========================================================");
-	g_print(argc);
 	g_print(argv);
 	return EXIT_FAILURE;
 

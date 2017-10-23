@@ -28,7 +28,7 @@ main (gint   argc,
 {
 	JsonParser *parser;
 	JsonNode *root;
-	Gerror *error;
+	GError *error;
 
 	if (argc < 2)
 		{

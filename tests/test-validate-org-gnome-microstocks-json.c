@@ -30,6 +30,7 @@ main (gint   argc,
 	JsonNode *root;
 	GError *error;
 
+	g_print("==========================================================");
 	g_print(argc);
 	g_print(argv);
 	return EXIT_FAILURE;

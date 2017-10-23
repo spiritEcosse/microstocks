@@ -29,10 +29,8 @@ main (gint   argc,
 	JsonParser *parser;
 	JsonNode *root;
 	GError *error;
-	char string;
-	char key;
 
-	string key = argv[1];
+	g_print(argv);
 
 	if (argv[1])
 		{

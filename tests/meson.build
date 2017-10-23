@@ -9,7 +9,7 @@ exec = executable('test-validate-org-gnome-microstocks-json',
 	dependencies: microstocks_deps,
 )
 test('Test validate org gnome microstocks json', exec,
-env: ['json_file=org.gnome.Microstocks.json'],
+data: ['org.gnome.Microstocks.json'],
 )
 
 # exec = executable('test-settings-window',

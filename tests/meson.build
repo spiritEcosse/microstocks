@@ -8,7 +8,7 @@ exec = executable('test-validate-org-gnome-microstocks-json',
 	'test-validate-org-gnome-microstocks-json.c',
 	dependencies: microstocks_deps,
 	c_args: [
-		'--files /home/igor/projects/microstocks/org.gnome.Microstocks.json'
+		'/home/igor/projects/microstocks/org.gnome.Microstocks.json'
 	],
 )
 test('Test validate org gnome microstocks json', exec)

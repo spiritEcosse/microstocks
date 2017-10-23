@@ -18,7 +18,7 @@
 
 #include "stdlib.h"
 #include "glib-object.h"
-#include "jsonj-glib/json-glib.h"
+#include "json-glib/json-glib.h"
 
 #include <glib.h>
 

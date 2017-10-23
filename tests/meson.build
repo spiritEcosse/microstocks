@@ -4,13 +4,13 @@ exec = executable('test-application-exit-success',
 )
 test('Application exit success', exec)
 
+install_data(['org.gnome.Microstocks.json'])
+
 exec = executable('test-validate-org-gnome-microstocks-json',
 	'test-validate-org-gnome-microstocks-json.c',
 	dependencies: microstocks_deps,
 )
-test('Test validate org gnome microstocks json', exec,
-data: ['org.gnome.Microstocks.json'],
-)
+test('Test validate org gnome microstocks json', exec)
 
 # exec = executable('test-settings-window',
 #     'test-settings-window.c',

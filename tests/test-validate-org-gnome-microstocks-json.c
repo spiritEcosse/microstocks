@@ -41,11 +41,13 @@ test_org_gnome_sync(void) {
 	json_parser_load_from_stream (parser, G_INPUT_STREAM (stream), NULL, &error);
 	g_assert_no_error (error);
 
-	root = json_parser_steal_root (parser);
+	root = json_parser_get_root (parser);
 	g_assert (root != NULL);
 
 	array = json_node_get_array (root);
 	g_assert_cmpint (json_array_get_length (array), ==, 1);
+	g_assert (JSON_NODE_HOLDS_OBJECT (json_array_get_element (array, 0)));
+	g_assert (json_object_has_member (json_array_get_object_element (array, 0), "app-id"));
 
 	g_free (path);
 }

@@ -20,7 +20,7 @@
 #include <glib.h>
 #include "json-glib/json-glib.h"
 
-static const gchar *original_array =
+static const gchar *source_str =
 "[ "
 	"{ "
 		"\"app-id\": \"org.gnome.Microstocks\", "
@@ -85,6 +85,7 @@ test_org_gnome_sync(void) {
 	GError *error = NULL;
 	char *path;
 	JsonArray *array;
+	gchar *target_str;
 
 	parser = json_parser_new ();
 
@@ -104,7 +105,7 @@ test_org_gnome_sync(void) {
 	g_assert_cmpint (json_array_get_length (array), ==, 1);
 	g_assert (JSON_NODE_HOLDS_OBJECT (json_array_get_element (array, 0)));
 
-	json_node_get_string(root);
+	target_str = json_node_get_string(root);
 	g_free (path);
 }
 

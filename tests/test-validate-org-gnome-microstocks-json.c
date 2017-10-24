@@ -47,8 +47,59 @@ test_org_gnome_sync(void) {
 	array = json_node_get_array (root);
 	g_assert_cmpint (json_array_get_length (array), ==, 1);
 	g_assert (JSON_NODE_HOLDS_OBJECT (json_array_get_element (array, 0)));
-	g_assert (json_object_has_member (json_array_get_object_element (array, 0), "app-id"));
-	g_assert (json_object_equal (json_object_get_object_member (json_array_get_object_element (array, 0), "app-id"), "test"));
+	g_assert (json_array_equal (array, {
+					  "app-id": "org.gnome.Microstocks",
+					  "runtime": "org.gnome.Platform",
+					  "runtime-version": "3.26",
+					  "sdk": "org.gnome.Sdk",
+					  "command": "microstocks",
+					  "finish-args": [
+					    "--share=network",
+					    "--share=ipc",
+					    "--socket=x11",
+					    "--socket=wayland",
+					    "--filesystem=xdg-run/dconf",
+					    "--filesystem=~/.config/dconf:ro",
+					    "--talk-name=ca.desrt.dconf",
+					    "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+					  ],
+					  "build-options": {
+					    "cflags": "-O2 -g",
+					    "cxxflags": "-O2 -g",
+					    "env": {
+					      "V": "1"
+					    }
+					  },
+					  "cleanup": [
+					    "/include",
+					    "/lib/pkgconfig",
+					    "/man",
+					    "/share/doc",
+					    "/share/gtk-doc",
+					    "/share/man",
+					    "/share/pkgconfig",
+
+					    "*.la",
+					    "*.a"
+					  ],
+					  "modules": [
+					    {
+					      "name": "microstocks",
+					      "buildsystem": "meson",
+					      "config-opts": [
+						"--libdir=lib"
+					      ],
+					      "builddir": true,
+					      "sources": [
+						{
+						  "type": "git",
+						  "url": "file:///home/igor/projects/microstocks"
+						}
+					      ]
+					    }
+					  ]
+					}
+				     ));
 
 	g_free (path);
 }

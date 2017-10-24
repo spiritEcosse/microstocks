@@ -20,22 +20,8 @@
 #include <glib.h>
 #include "json-glib/json-glib.h"
 
-static const gchar *nested_object =
-"{ "
-  "\"Image\" : { "
-    "\"Width\" : 800, "
-    "\"Height\" : 600, "
-    "\"Title\" : \"View from 15th Floor\", "
-    "\"Thumbnail\" : { "
-      "\"Url\" : \"http://www.example.com/image/481989943\", "
-      "\"Height\" : 125, "
-      "\"Width\" : \"100\" "
-    "}, "
-    "\"IDs\" : [ 116, 943, 234, 38793 ] "
-  "} "
-"}";
-
-static const gchar *simple_array =
+static const gchar *original_array =
+"[ "
 	"{ "
 		"\"app-id\": \"org.gnome.Microstocks\", "
 		"\"runtime\": \"org.gnome.Platform\", "
@@ -88,7 +74,7 @@ static const gchar *simple_array =
 			" } "
 		" ] "
 	" } "
-"}";
+" ] ";
 
 static void
 test_org_gnome_sync(void) {
@@ -118,6 +104,7 @@ test_org_gnome_sync(void) {
 	g_assert_cmpint (json_array_get_length (array), ==, 1);
 	g_assert (JSON_NODE_HOLDS_OBJECT (json_array_get_element (array, 0)));
 
+	json_node_get_string(root);
 	g_free (path);
 }
 

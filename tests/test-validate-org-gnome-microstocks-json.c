@@ -25,8 +25,10 @@ test_org_gnome_sync(void) {
 	JsonParser *parser;
 	GFile *file;
 	GFileInputStream *stream;
+	JsonNode *root;
 	GError *error = NULL;
 	char *path;
+	JsonArray *array;
 
 	parser = json_parser_new ();
 
@@ -38,6 +40,9 @@ test_org_gnome_sync(void) {
 
 	json_parser_load_from_stream (parser, G_INPUT_STREAM (stream), NULL, &error);
 	g_assert_no_error (error);
+
+	root = json_parser_get_root (parser);
+	g_assert (root != NULL);
 
 	g_free (path);
 }

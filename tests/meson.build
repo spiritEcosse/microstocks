@@ -4,14 +4,8 @@ exec = executable('test-application-exit-success',
 )
 test('Application exit success', exec)
 
-install_data(['/home/igor/projects/microstocks/org.gnome.Microstocks.json'],
-	install_dir: meson.source_root()
-)
-
 exec = executable('test-validate-org-gnome-microstocks-json',
-	'parser.c',
-	install: true,
-	install_dir: installed_test_bindir,
+	'test-validate-org-gnome-microstocks-json.c',
 	dependencies: [json_glib],
 )
 test('Test validate org gnome microstocks json', exec)

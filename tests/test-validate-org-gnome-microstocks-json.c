@@ -1,4 +1,4 @@
-/* parser.c
+/* test-validate-org-gnome-microstocks-json.c
  *
  * Copyright (C) 2017 igor <shevchenkcoigor@gmail.com>
  *
@@ -22,8 +22,11 @@
 
 static void
 test_org_gnome_sync(void) {
+	GFile *file;
 	char *path;
+
 	path = g_test_build_filename (G_TEST_DIST, "org.gnome.Microstocks.json", NULL);
+	file = g_file_new_for_path (path);
 	g_free (path);
 }
 

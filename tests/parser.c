@@ -1,4 +1,4 @@
-/* test-validate-org-gnome-microstocks-json.c
+/* parser.c
  *
  * Copyright (C) 2017 igor <shevchenkcoigor@gmail.com>
  *
@@ -17,48 +17,21 @@
  */
 
 #include "stdlib.h"
-#include "glib-object.h"
+#include <glib.h>
 #include "json-glib/json-glib.h"
 
-#include <glib.h>
+static void
+test_org_gnome_sync(void) {
+	char *path;
+	path = g_test_build_filename (G_TEST_DIST, "org.gnome.Microstocks.json", NULL);
+	g_free (path);
+}
 
 gint
 main (gint   argc,
       gchar *argv[])
 {
-	JsonParser *parser;
-	JsonNode *root;
-	GError *error;
-
-	g_print(argv);
-
-	if (argv[1])
-		{
-			g_print ("Usage: test <filename.json>\n");
-			return EXIT_FAILURE;
-		}
-
-	g_print("==========================================================");
-	g_print(argv);
-	return EXIT_FAILURE;
-
-	parser = json_parser_new ();
-	error = NULL;
-	json_parser_load_from_file (parser, argv[1], &error);
-
-	if (error)
-		{
-			g_print ("Unable to parse `%s': %s\n", argv[1],
-				 error->message);
-			g_error_free (error);
-			g_object_unref (parser);
-			return EXIT_FAILURE;
-		}
-
-	root = json_parser_get_root (parser);
-
-	/* manipulate the object tree and then exit */
-
-	g_object_unref (parser);
-	return EXIT_SUCCESS;
+	g_test_init(&argc, &argv, NULL);
+	g_test_add_func("/parser/org-gnome-sync", test_org_gnome_sync);
+	return g_test_run();
 }

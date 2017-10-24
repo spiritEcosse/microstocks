@@ -37,6 +37,55 @@ test_org_gnome_sync(void) {
 		"[ "
 			"{ "
 				"\"app-id\": \"org.gnome.Microstocks\", "
+				"\"runtime\": \"org.gnome.Platform\", "
+				"\"runtime-version\": \"3.26\", "
+				"\"sdk\": \"org.gnome.Sdk\", "
+				"\"command\": \"microstocks\", "
+				"\"finish-args\": [ "
+					"\"--share=network\", "
+					"\"--share=ipc\", "
+					"\"--socket=x11\", "
+					"\"--socket=wayland\", "
+					"\"--filesystem=xdg-run/dconf\", "
+					"\"--filesystem=~/.config/dconf:ro\", "
+					"\"--talk-name=ca.desrt.dconf\", "
+					"\"--env=DCONF_USER_CONFIG_DIR=.config/dconf\" "
+				" ], "
+				"\"build-options\": { "
+					"\"cflags\": \"-O2 -g\", "
+					"\"cxxflags\": \"-O2 -g\", "
+					"\"env\": { "
+						"\"V\": \"1\" "
+					" } "
+				" }, "
+				"\"cleanup\": [ "
+					"\"/include\", "
+					"\"/lib/pkgconfig\", "
+					"\"/man\", "
+					"\"/share/doc\", "
+					"\"/share/gtk-doc\", "
+					"\"/share/man\", "
+					"\"/share/pkgconfig\", "
+
+					"\"*.la\", "
+					"\"*.a\" "
+				" ], "
+				"\"modules\": [ "
+					" { "
+						"\"name\": \"microstocks\", "
+						"\"buildsystem\": \"meson\", "
+						"\"config-opts\": [ "
+							"\"--libdir=lib\" "
+						" ], "
+						"\"builddir\": true, "
+						"\"sources\": [ "
+							" { "
+								"\"type\": \"git\", "
+								"\"url\": \"file:///home/igor/projects/microstocks\" "
+							" } "
+						" ] "
+					" } "
+				" ] "
 			" } "
 		" ] ";
 
@@ -59,8 +108,9 @@ test_org_gnome_sync(void) {
 	g_assert_cmpint (json_array_get_length (array), ==, 1);
 	g_assert (JSON_NODE_HOLDS_OBJECT (json_array_get_element (array, 0)));
 
-	source_node = json_node_init_string(source_node, source_str);
-	g_assert_true(json_node_equal(root, root));
+	json_node_init_string(source_node, source_str);
+	g_assert_false(json_node_is_null(source_node));
+	json_node_equal(source_node, root);
 	g_free (path);
 }
 

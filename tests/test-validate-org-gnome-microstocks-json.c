@@ -41,7 +41,7 @@ test_org_gnome_sync(void) {
 	json_parser_load_from_stream (parser, G_INPUT_STREAM (stream), NULL, &error);
 	g_assert_no_error (error);
 
-	root = json_parser_get_root (parser);
+	root = json_parser_steal_root (parser);
 	g_assert (root != NULL);
 
 	array = json_node_get_array (root);

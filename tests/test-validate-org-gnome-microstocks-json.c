@@ -30,10 +30,14 @@ test_org_gnome_sync(void) {
 
 	parser = json_parser_new ();
 
-	path = g_test_build_filename (G_TEST_DIST, "org.gnome.Microstockssd.json", NULL);
+	path = g_test_build_filename (G_TEST_DIST, "org.gnome.Microstocks.json", NULL);
 	file = g_file_new_for_path (path);
 	stream = g_file_read (file, NULL, &error);
+	g_assert_no_error (error);
+	g_assert (stream != NULL);
 
+	json_parser_load_from_stream (parser, G_INPUT_STREAM (stream), NULL, &error);
+	g_assert_no_error (error);
 
 	g_free (path);
 }

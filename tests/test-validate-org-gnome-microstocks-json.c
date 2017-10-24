@@ -85,7 +85,7 @@ test_org_gnome_sync(void) {
 	GError *error = NULL;
 	char *path;
 	JsonArray *array;
-	JsonNode *target_node;
+	JsonNode *target_node = json_node_new (JSON_NODE_NULL);
 	const gchar *target_str;
 
 	parser = json_parser_new ();
@@ -106,10 +106,7 @@ test_org_gnome_sync(void) {
 	g_assert_cmpint (json_array_get_length (array), ==, 1);
 	g_assert (JSON_NODE_HOLDS_OBJECT (json_array_get_element (array, 0)));
 
-	target_node = json_node_init_string(json_node_new(), target_str);
-
-	target_str = json_node_dup_string(root);
-	g_assert_cmpstr (source_str, ==, target_str);
+	json_node_init_string(target_node, target_str);
 	g_free (path);
 }
 

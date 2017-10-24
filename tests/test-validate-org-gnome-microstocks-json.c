@@ -34,6 +34,7 @@ test_org_gnome_sync(void) {
 	file = g_file_new_for_path (path);
 	stream = g_file_read (file, NULL, &error);
 
+
 	g_free (path);
 }
 

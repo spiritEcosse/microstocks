@@ -20,6 +20,76 @@
 #include <glib.h>
 #include "json-glib/json-glib.h"
 
+static const gchar *nested_object =
+"{ "
+  "\"Image\" : { "
+    "\"Width\" : 800, "
+    "\"Height\" : 600, "
+    "\"Title\" : \"View from 15th Floor\", "
+    "\"Thumbnail\" : { "
+      "\"Url\" : \"http://www.example.com/image/481989943\", "
+      "\"Height\" : 125, "
+      "\"Width\" : \"100\" "
+    "}, "
+    "\"IDs\" : [ 116, 943, 234, 38793 ] "
+  "} "
+"}";
+
+static const gchar *simple_array =
+	"{ "
+		"\"app-id\": \"org.gnome.Microstocks\", "
+		"\"runtime\": \"org.gnome.Platform\", "
+		"\"runtime-version\": \"3.26\", "
+		"\"sdk\": \"org.gnome.Sdk\", "
+		"\"command\": \"microstocks\", "
+		"\"finish-args\": [ "
+			"\"--share=network\", "
+			"\"--share=ipc\", "
+			"\"--socket=x11\", "
+			"\"--socket=wayland\", "
+			"\"--filesystem=xdg-run/dconf\", "
+			"\"--filesystem=~/.config/dconf:ro\", "
+			"\"--talk-name=ca.desrt.dconf\", "
+			"\"--env=DCONF_USER_CONFIG_DIR=.config/dconf\" "
+		" ], "
+		"\"build-options\": { "
+			"\"cflags\": \"-O2 -g\", "
+			"\"cxxflags\": \"-O2 -g\", "
+			"\"env\": { "
+				"\"V\": \"1\" "
+			" } "
+		" }, "
+		"\"cleanup\": [ "
+			"\"/include\", "
+			"\"/lib/pkgconfig\", "
+			"\"/man\", "
+			"\"/share/doc\", "
+			"\"/share/gtk-doc\", "
+			"\"/share/man\", "
+			"\"/share/pkgconfig\", "
+
+			"\"*.la\", "
+			"\"*.a\" "
+		" ], "
+		"\"modules\": [ "
+			" { "
+				"\"name\": \"microstocks\", "
+				"\"buildsystem\": \"meson\", "
+				"\"config-opts\": [ "
+					"\"--libdir=lib\" "
+				" ], "
+				"\"builddir\": true, "
+				"\"sources\": [ "
+					" { "
+						"\"type\": \"git\", "
+						"\"url\": \"file:///home/igor/projects/microstocks\" "
+					" } "
+				" ] "
+			" } "
+		" ] "
+	" } "
+"}";
+
 static void
 test_org_gnome_sync(void) {
 	JsonParser *parser;
@@ -47,59 +117,6 @@ test_org_gnome_sync(void) {
 	array = json_node_get_array (root);
 	g_assert_cmpint (json_array_get_length (array), ==, 1);
 	g_assert (JSON_NODE_HOLDS_OBJECT (json_array_get_element (array, 0)));
-	g_assert (json_array_equal (array, {
-					  "app-id": "org.gnome.Microstocks",
-					  "runtime": "org.gnome.Platform",
-					  "runtime-version": "3.26",
-					  "sdk": "org.gnome.Sdk",
-					  "command": "microstocks",
-					  "finish-args": [
-					    "--share=network",
-					    "--share=ipc",
-					    "--socket=x11",
-					    "--socket=wayland",
-					    "--filesystem=xdg-run/dconf",
-					    "--filesystem=~/.config/dconf:ro",
-					    "--talk-name=ca.desrt.dconf",
-					    "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
-					  ],
-					  "build-options": {
-					    "cflags": "-O2 -g",
-					    "cxxflags": "-O2 -g",
-					    "env": {
-					      "V": "1"
-					    }
-					  },
-					  "cleanup": [
-					    "/include",
-					    "/lib/pkgconfig",
-					    "/man",
-					    "/share/doc",
-					    "/share/gtk-doc",
-					    "/share/man",
-					    "/share/pkgconfig",
-
-					    "*.la",
-					    "*.a"
-					  ],
-					  "modules": [
-					    {
-					      "name": "microstocks",
-					      "buildsystem": "meson",
-					      "config-opts": [
-						"--libdir=lib"
-					      ],
-					      "builddir": true,
-					      "sources": [
-						{
-						  "type": "git",
-						  "url": "file:///home/igor/projects/microstocks"
-						}
-					      ]
-					    }
-					  ]
-					}
-				     ));
 
 	g_free (path);
 }

@@ -48,6 +48,7 @@ test_org_gnome_sync(void) {
 	g_assert_cmpint (json_array_get_length (array), ==, 1);
 	g_assert (JSON_NODE_HOLDS_OBJECT (json_array_get_element (array, 0)));
 	g_assert (json_object_has_member (json_array_get_object_element (array, 0), "app-id"));
+	g_assert (json_object_equal (json_object_get_object_member (json_array_get_object_element (array, 0), "app-id"), "test"));
 
 	g_free (path);
 }

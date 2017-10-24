@@ -20,6 +20,9 @@
 #include <glib.h>
 #include "json-glib/json-glib.h"
 
+#include <stdlib.h>
+#include <stdio.h>
+
 static void
 test_org_gnome_sync(void) {
 	JsonParser *parser;
@@ -106,7 +109,7 @@ test_org_gnome_sync(void) {
 	g_assert (JSON_NODE_HOLDS_OBJECT (json_array_get_element (array, 0)));
 
 	json_node_init_string(source_node, source_str);
-	g_print("%s\n", json_node_equal(source_node, root));
+	json_node_equal(json_node_new (JSON_NODE_NULL), json_node_new (JSON_NODE_NULL));
 	g_free (path);
 }
 

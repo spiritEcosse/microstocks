@@ -106,7 +106,7 @@ test_org_gnome_sync(void) {
 	g_assert (JSON_NODE_HOLDS_OBJECT (json_array_get_element (array, 0)));
 
 	json_node_init_string(source_node, source_str);
-	g_assert(json_node_equal(source_node, root), TRUE);
+	g_assert_true(json_node_equal(source_node, root));
 	g_free (path);
 }
 

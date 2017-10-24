@@ -44,6 +44,9 @@ test_org_gnome_sync(void) {
 	root = json_parser_get_root (parser);
 	g_assert (root != NULL);
 
+	array = json_node_get_array (root);
+	g_assert_cmpint (json_array_get_length (array), ==, 1);
+
 	g_free (path);
 }
 

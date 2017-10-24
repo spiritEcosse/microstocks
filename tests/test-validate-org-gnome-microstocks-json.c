@@ -22,11 +22,18 @@
 
 static void
 test_org_gnome_sync(void) {
+	JsonParser *parser;
 	GFile *file;
+	GFileInputStream *stream;
+	GError *error = NULL;
 	char *path;
 
-	path = g_test_build_filename (G_TEST_DIST, "org.gnome.Microstocks.json", NULL);
+	parser = json_parser_new ();
+
+	path = g_test_build_filename (G_TEST_DIST, "org.gnome.Microstockssd.json", NULL);
 	file = g_file_new_for_path (path);
+	stream = g_file_read (file, NULL, &error);
+
 	g_free (path);
 }
 

@@ -1,6 +1,7 @@
 microstocks_sources = [
   'main.c',
   'microstocks-window.c',
+  'microstocks-app.c',
 ]
 
 json_glib = dependency('json-glib-1.0', version : '>= 1.1.1')

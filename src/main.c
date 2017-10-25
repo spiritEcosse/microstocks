@@ -19,6 +19,7 @@
 #include <glib/gi18n.h>
 #include "microstocks-config.h"
 #include "microstocks-window.h"
+#include "microstocks-app.h"
 
 static void
 on_activate (GtkApplication *app)
@@ -48,8 +49,8 @@ int
 main (int   argc,
       char *argv[])
 {
-	g_autoptr(GtkApplication) app = NULL;
-	int ret;
+	/*g_autoptr(GtkApplication) app = NULL; */
+	/*int ret;*/
 
 	/* Set up gettext translations */
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
@@ -61,7 +62,7 @@ main (int   argc,
 	 * application windows, integration with the window manager/compositor, and
 	 * desktop features such as file opening and single-instance applications.
 	 */
-	app = gtk_application_new ("org.gnome.Microstocks", G_APPLICATION_FLAGS_NONE);
+	/*app = gtk_application_new ("org.gnome.Microstocks", G_APPLICATION_FLAGS_NONE);*/
 
 	/*
 	 * We connect to the activate signal to create a window when the application
@@ -72,7 +73,7 @@ main (int   argc,
 	 * Because we can't pass a pointer to any function type, we have to cast
 	 * our "on_activate" function to a GCallback.
 	 */
-	g_signal_connect (app, "activate", G_CALLBACK (on_activate), NULL);
+	/*g_signal_connect (app, "activate", G_CALLBACK (on_activate), NULL);*/
 
 	/*
 	 * Run the application. This function will block until the applicaiton
@@ -84,7 +85,7 @@ main (int   argc,
 	 * method "run". But we need to cast, which is what the "G_APPLICATION()"
 	 * macro does.
 	 */
-	ret = g_application_run (G_APPLICATION (app), argc, argv);
+	/*ret = g_application_run (G_APPLICATION (app), argc, argv);*/
 
-	return ret;
+	return g_application_run (G_APPLICATION (microstocks_app_new()), argc, argv);
 }

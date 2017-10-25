@@ -26,15 +26,15 @@
 static void
 test_org_gnome_sync(void) {
 	JsonParser *parser;
+	JsonParser *source_parser;
 	GFile *file;
 	GFileInputStream *stream;
 	JsonNode *root;
+	JsonNode *source_root;
 	GError *error = NULL;
 	char *path;
 	JsonArray *array;
-	JsonArray *source_array;
-	JsonNode *source_node = json_node_new (JSON_NODE_NULL);
-	const char *source_str =
+	const gchar *source_str =
 		"["
 			"{"
 				"\"app-id\": \"org.gnome.Microstocks\","
@@ -109,8 +109,13 @@ test_org_gnome_sync(void) {
 	g_assert_cmpint (json_array_get_length (array), ==, 1);
 	g_assert (JSON_NODE_HOLDS_OBJECT (json_array_get_element (array, 0)));
 
-	g_print(source_str);
-	json_node_init_string(source_node, source_str);
+	source_parser = json_parser_new();
+	json_parser_load_from_data(source_parser, source_str, -1, &error);
+	source_root = json_parser_get_root (source_parser);
+	g_assert_no_error (error);
+
+	g_assert_true(json_node_equal(source_root, root));
+	g_assert(FALSE);
 	g_free (path);
 }
 

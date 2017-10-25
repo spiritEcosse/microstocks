@@ -66,7 +66,7 @@ microstocks_app_startup (GApplication *app)
 					       "app.quit",
 					       quit_accels);
 
-	builder = gtk_builder_new_from_resource ("/org/gtk/exampleapp/app-menu.ui");
+	builder = gtk_builder_new_from_resource ("/org/gnome/Microstocks/app-menu.ui");
 	app_menu = G_MENU_MODEL (gtk_builder_get_object (builder, "appmenu"));
 	gtk_application_set_app_menu (GTK_APPLICATION (app), app_menu);
 	g_object_unref (builder);
@@ -102,7 +102,6 @@ microstocks_app_open (GApplication  *app,
 
 	  gtk_window_present (GTK_WINDOW (window));
 }
-
 
 static void
 microstocks_app_class_init (MicrostocksAppClass *class)

@@ -82,34 +82,10 @@ microstocks_app_activate (GApplication *app)
 }
 
 static void
-microstocks_app_open (GApplication  *app,
-		      GFile        **files,
-		      gint           n_files,
-		      const gchar   *hint)
-{
-	  GList *windows;
-	  MicrostocksWindow *window;
-	  int i;
-
-	  windows = gtk_application_get_windows (GTK_APPLICATION (app));
-	  if (windows)
-		window = MICROSTOCKS_WINDOW (windows->data);
-	  else
-		window = microstocks_window_new (MICROSTOCKS_APP (app));
-
-	  for (i = 0; i < n_files; i++)
-		microstocks_window_open (window, files[i]);
-
-	  gtk_window_present (GTK_WINDOW (window));
-}
-
-
-static void
 microstocks_app_class_init (MicrostocksAppClass *class)
 {
 	G_APPLICATION_CLASS (class)->startup = microstocks_app_startup;
 	G_APPLICATION_CLASS (class)->activate = microstocks_app_activate;
-	G_APPLICATION_CLASS (class)->open = microstocks_app_open;
 }
 
 static void

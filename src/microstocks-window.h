@@ -28,7 +28,7 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (MicrostocksWindow, microstocks_window, MICROSTOCKS, WINDOW, GtkApplicationWindow)
 
 MicrostocksWindow 	*microctocks_window_new(MicrostocksApp 	*app);
-void			microctocks_window_open(MicrostocksApp	*window,
-						GFile 		*file);
+void			microctocks_window_open(MicrostocksWindow	*window,
+						GFile 			*file);
 
 G_END_DECLS

@@ -73,11 +73,11 @@ microstocks_app_startup (GApplication *app)
 }
 
 static void
-example_app_activate (GApplication *app)
+microstocks_app_activate (GApplication *app)
 {
 	MicrostocksWindow *window;
 
-	window = microstocks_app_window_new (MICROSTOCKS_APP (app));
+	window = microstocks_window_new (MICROSTOCKS_APP (app));
 	gtk_window_present (GTK_WINDOW (window));
 }
 

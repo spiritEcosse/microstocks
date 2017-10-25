@@ -44,3 +44,10 @@ microstocks_window_init (MicrostocksWindow *self)
 {
   gtk_widget_init_template (GTK_WIDGET (self));
 }
+
+MicrostocksWindow *
+microstocks_window_new (MicrostocksApp *app)
+{
+  return g_object_new (MICROSTOCKS_TYPE_WINDOW, "application", app, NULL);
+}
+

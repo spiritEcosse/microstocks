@@ -19,11 +19,16 @@
 #pragma once
 
 #include <gtk/gtk.h>
+#include <microstocks-app.h>
 
 G_BEGIN_DECLS
 
 #define MICROSTOCKS_TYPE_WINDOW (microstocks_window_get_type())
 
 G_DECLARE_FINAL_TYPE (MicrostocksWindow, microstocks_window, MICROSTOCKS, WINDOW, GtkApplicationWindow)
+
+MicrostocksWindow 	*microctocks_window_new(MicrostocksApp 	*app);
+void			microctocks_window_open(MicrostocksApp	*window,
+						GFile 		*file);
 
 G_END_DECLS

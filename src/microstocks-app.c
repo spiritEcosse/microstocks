@@ -30,7 +30,6 @@ static void
 microstocks_app_finalize (GObject *object)
 {
 	MicrostocksApp *self = (MicrostocksApp *)object;
-	MicrostocksAppPrivate *priv = microstocks_app_get_instance_private (self);
 
 	G_OBJECT_CLASS (microstocks_app_parent_class)->finalize (object);
 }

@@ -18,19 +18,7 @@
 
 #include "microstocks-app.h"
 
-typedef struct
-{
-
-} MicrostocksAppPrivate;
-
-G_DEFINE_TYPE_WITH_PRIVATE (MicrostocksApp, microstocks_app, G_TYPE_APPLICATION)
-
-enum {
-	PROP_0,
-	N_PROPS
-};
-
-static GParamSpec *properties [N_PROPS];
+G_DEFINE_TYPE (MicrostocksApp, microstocks_app, GTK_TYPE_APPLICATION)
 
 MicrostocksApp *
 microstocks_app_new (void)

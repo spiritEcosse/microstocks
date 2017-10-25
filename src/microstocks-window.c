@@ -16,7 +16,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "microstocks-config.h"
 #include "microstocks-window.h"
 
 struct _MicrostocksWindow

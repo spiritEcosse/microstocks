@@ -21,29 +21,32 @@
 #include "microstocks-window.h"
 #include "microstocks-app.h"
 
+/*
 static void
 on_activate (GtkApplication *app)
 {
 	GtkWindow *window;
-
+*/
 	/* It's good practice to check your parameters at the beginning of the
 	 * function. It helps catch errors early and in development instead of
 	 * by your users.
 	 */
-	g_assert (GTK_IS_APPLICATION (app));
-
+/*	g_assert (GTK_IS_APPLICATION (app));
+*/
 	/* Get the current window or create one if necessary. */
-	window = gtk_application_get_active_window (app);
+/*	window = gtk_application_get_active_window (app);
 	if (window == NULL)
 		window = g_object_new (MICROSTOCKS_TYPE_WINDOW,
 		                       "application", app,
 		                       "default-width", 600,
 		                       "default-height", 300,
 		                       NULL);
-
+*/
 	/* Ask the window manager/compositor to present the window. */
-	gtk_window_present (window);
+/*	gtk_window_present (window);
 }
+*/
+
 
 int
 main (int   argc,

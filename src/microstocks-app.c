@@ -18,50 +18,27 @@
 
 #include "microstocks-app.h"
 
+struct _MicrostocksApp
+{
+	GtkApplication parent;
+};
+
+
 G_DEFINE_TYPE (MicrostocksApp, microstocks_app, GTK_TYPE_APPLICATION)
 
 MicrostocksApp *
 microstocks_app_new (void)
 {
-	return g_object_new (MICROSTOCKS_TYPE_APP, NULL);
+	return g_object_new (MICROSTOCKS_TYPE_APP,
+			     "application-id", "org.gnome.Microstocks",
+			     "flags", G_APPLICATION_HANDLES_OPEN,
+			     NULL);
 }
 
 static void
 microstocks_app_finalize (GObject *object)
 {
-	MicrostocksApp *self = (MicrostocksApp *)object;
-
 	G_OBJECT_CLASS (microstocks_app_parent_class)->finalize (object);
-}
-
-static void
-microstocks_app_get_property (GObject    *object,
-                              guint       prop_id,
-                              GValue     *value,
-                              GParamSpec *pspec)
-{
-	MicrostocksApp *self = MICROSTOCKS_APP (object);
-
-	switch (prop_id)
-	  {
-	  default:
-	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-	  }
-}
-
-static void
-microstocks_app_set_property (GObject      *object,
-                              guint         prop_id,
-                              const GValue *value,
-                              GParamSpec   *pspec)
-{
-	MicrostocksApp *self = MICROSTOCKS_APP (object);
-
-	switch (prop_id)
-	  {
-	  default:
-	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-	  }
 }
 
 static void
@@ -70,8 +47,6 @@ microstocks_app_class_init (MicrostocksAppClass *klass)
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
 	object_class->finalize = microstocks_app_finalize;
-	object_class->get_property = microstocks_app_get_property;
-	object_class->set_property = microstocks_app_set_property;
 }
 
 static void

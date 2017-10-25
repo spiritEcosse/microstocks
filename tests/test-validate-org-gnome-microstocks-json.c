@@ -115,7 +115,6 @@ test_org_gnome_sync(void) {
 	g_assert_no_error (error);
 
 	g_assert_true(json_node_equal(source_root, root));
-	g_assert(FALSE);
 	g_free (path);
 }
 

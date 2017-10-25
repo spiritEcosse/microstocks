@@ -1,4 +1,4 @@
-/* test-application.c
+/* test-application-exit-success.c
  *
  * Copyright (C) 2017 igor <shevchenkcoigor@gmail.com>
  *

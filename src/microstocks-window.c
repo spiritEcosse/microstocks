@@ -51,4 +51,8 @@ microstocks_window_new (MicrostocksApp *app)
   return g_object_new (MICROSTOCKS_TYPE_WINDOW, "application", app, NULL);
 }
 
-
+void
+microstocks_window_open (MicrostocksWindow *win,
+			 GFile            *file)
+{
+}

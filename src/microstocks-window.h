@@ -23,7 +23,7 @@
 
 G_BEGIN_DECLS
 
-#define MICROSTOCKS_TYPE_WINDOW (microstocks_window_get_type())
+#define MICROSTOCKS_WINDOW_TYPE (microstocks_window_get_type())
 
 G_DECLARE_FINAL_TYPE (MicrostocksWindow, microstocks_window, MICROSTOCKS, WINDOW, GtkApplicationWindow)
 

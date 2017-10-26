@@ -20,14 +20,22 @@
 
 struct _MicrostocksWindow
 {
-  GtkApplicationWindow  parent_instance;
+  GtkApplicationWindow  parent;
 
   /* Template widgets */
   GtkHeaderBar        *header_bar;
   GtkLabel            *label;
 };
 
-G_DEFINE_TYPE (MicrostocksWindow, microstocks_window, GTK_TYPE_APPLICATION_WINDOW)
+typedef struct _MicrostocksWindowPrivate MicrostocksWindowPrivate;
+
+struct _MicrostocksWindowPrivate
+{
+};
+
+G_DEFINE_TYPE_WITH_PRIVATE (MicrostocksWindow,
+			    microstocks_window,
+			    GTK_TYPE_APPLICATION_WINDOW)
 
 static void
 microstocks_window_class_init (MicrostocksWindowClass *klass)
@@ -48,7 +56,7 @@ microstocks_window_init (MicrostocksWindow *self)
 MicrostocksWindow *
 microstocks_window_new (MicrostocksApp *app)
 {
-  return g_object_new (MICROSTOCKS_TYPE_WINDOW, "application", app, NULL);
+  return g_object_new (MICROSTOCKS_WINDOW_TYPE, "application", app, NULL);
 }
 
 void

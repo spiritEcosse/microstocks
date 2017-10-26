@@ -29,7 +29,7 @@ G_DEFINE_TYPE (MicrostocksApp, microstocks_app, GTK_TYPE_APPLICATION)
 MicrostocksApp *
 microstocks_app_new (void)
 {
-	return g_object_new (MICROSTOCKS_TYPE_APP,
+	return g_object_new (MICROSTOCKS_APP_TYPE,
 			     "application-id", "org.gnome.Microstocks",
 			     "flags", G_APPLICATION_HANDLES_OPEN,
 			     NULL);

@@ -23,7 +23,7 @@
 
 G_BEGIN_DECLS
 
-#define MICROSTOCKS_TYPE_APP (microstocks_app_get_type())
+#define MICROSTOCKS_APP_TYPE (microstocks_app_get_type())
 
 G_DECLARE_FINAL_TYPE (MicrostocksApp, microstocks_app, MICROSTOCKS, APP, GtkApplication)
 

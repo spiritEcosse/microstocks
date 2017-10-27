@@ -1,6 +1,7 @@
 microstocks_sources = [
   'main.c',
   'microstocks-app.c',
+  'tree-node.c',
   'microstocks-window.c',
 ]
 

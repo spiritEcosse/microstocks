@@ -1,4 +1,4 @@
-/* node-tree.h
+/* tree-node.h
  *
  * Copyright (C) 2017 igor <shevchenkcoigor@gmail.com>
  *
@@ -16,21 +16,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NODE_TREE_H
-#define NODE_TREE_H
+#ifndef TREE_NODE_H
+#define TREE_NODE_H
 
 #include <glib-object.h>
-#include <gtk/gtk.h>
+#include <dazzle.h>
 
 G_BEGIN_DECLS
 
-#define NODE_TYPE_TREE (node_tree_get_type())
+#define TREE_TYPE_NODE (tree_node_get_type())
 
-G_DECLARE_FINAL_TYPE (NodeTree, node_tree, NODE, TREE, DzlTreeNode)
+G_DECLARE_FINAL_TYPE (TreeNode, tree_node, TREE, NODE, DzlTreeNode)
 
-NodeTree *node_tree_new (void);
+TreeNode *tree_node_new (void);
 
 G_END_DECLS
 
-#endif /* NODE_TREE_H */
+#endif /* TREE_NODE_H */
+
 

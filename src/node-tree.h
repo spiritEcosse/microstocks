@@ -20,6 +20,7 @@
 #define NODE_TREE_H
 
 #include <glib-object.h>
+#include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 

@@ -1,15 +1,10 @@
 #include <gtk/gtk.h>
+#include <dazzle.h>
 
 static void
-gb_project_tree_addin_context_set (GtkWidget  *widget,
-                                   IdeContext *context)
+tree_addin_context_set ()
 {
-	GbProjectTree *project_tree = (GbProjectTree *)widget;
-
-	g_assert (GB_IS_PROJECT_TREE (project_tree));
-	g_assert (!context || IDE_IS_CONTEXT (context));
-
-	gb_project_tree_set_context (project_tree, context);
+	DzlTreeNode *root;
 
 	root = dzl_tree_node_new ();
 	dzl_tree_node_set_item (root, G_OBJECT (context));

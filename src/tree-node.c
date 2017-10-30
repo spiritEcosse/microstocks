@@ -1,9 +1,9 @@
-#include <gtk/gtk.h>
 #include <dazzle.h>
 
 static void
 tree_addin_context_set ()
 {
+	GObject    *context;
 	DzlTreeNode *root;
 
 	root = dzl_tree_node_new ();

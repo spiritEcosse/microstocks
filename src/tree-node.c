@@ -1,4 +1,5 @@
 #include <dazzle.h>
+#include "node_tree.h"
 
 static void
 tree_addin_context_set ()

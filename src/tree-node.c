@@ -19,6 +19,13 @@
 #include <dazzle.h>
 #include "tree-node.h"
 
+struct _TreeNode
+{
+	GObject		parent_instance;
+	DzlTree		*tree;
+	GtkWidget	*panel;
+};
+
 typedef struct
 {
 
@@ -93,13 +100,17 @@ tree_node_init (TreeNode *self)
 {
 }
 
-
-
-
 static
 void tree_addin_context_set () {
 	GObject    *context;
 	DzlTreeNode *root;
+	TreeNode *self;
+
+	self->tree = g_object_new (TREE_TYPE_NODE,
+				   "headers-visible", FALSE,
+				   "level-indentation", 22,
+				   "visible", TRUE,
+				   NULL);
 
 	root = dzl_tree_node_new ();
 	dzl_tree_node_set_item (root, G_OBJECT (context));

@@ -64,3 +64,4 @@ microstocks_window_open (MicrostocksWindow *win,
 			 GFile            *file)
 {
 }
+
